@@ -1,13 +1,10 @@
 language: go
 install:
 - go get -v github.com/spf13/hugo
-- npm install
-- npm run print-version
 before_script:
-- npm run clean
-- npm run build
+- rm -rf public
 script:
-- npm run deploy
+- hugo
 branches:
   only:
   - master

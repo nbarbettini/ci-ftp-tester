@@ -5,9 +5,9 @@ install:
 - npm run print-version
 script:
 - npm run clean
-- npm run builds
+- npm run build
 after_success:
-- npm run deploys
+- npm run deploy
 branches:
   only:
   - master

@@ -1,13 +1,10 @@
 language: go
 install:
 - go get -v github.com/spf13/hugo
-- pip install --user awscli
 before_script:
 - rm -rf public
-- hugo
 script:
-- aws s3 sync public/ s3://testing.awesomestaticsites.com --acl public-read --delete
-- aws cloudfront create-invalidation --distribution-id E2GJP6PJFPEZP5 --paths '/*'
+  -hugo
 branches:
   only:
   - master

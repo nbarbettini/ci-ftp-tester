@@ -1,0 +1,13 @@
+language: go
+install:
+- go get -v github.com/spf13/hugo
+- npm install
+- npm run print-version
+script:
+- npm run clean
+- npm run builds
+after_success:
+- npm run deploys
+branches:
+  only:
+  - master

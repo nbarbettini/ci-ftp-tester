@@ -4,9 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "print-version": "node -v",
-    "clean": "rimraf public",
-    "build": "hugo",
     "deploy": "node deploy.js"
   },
   "repository": {
@@ -22,7 +19,6 @@
   "homepage": "https://github.com/nbarbettini/ci-ftp-tester#readme",
   "dependencies": {
     "glob": "^7.1.3",
-    "rimraf": "^2.6.2",
     "ssh2-sftp-client": "^3.1.0",
     "upath": "^1.1.0"
   }

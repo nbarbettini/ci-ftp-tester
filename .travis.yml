@@ -3,10 +3,10 @@ install:
 - go get -v github.com/spf13/hugo
 - npm install
 - npm run print-version
-script:
+before_script:
 - npm run clean
 - npm run build
-after_success:
+script:
 - npm run deploy
 branches:
   only:

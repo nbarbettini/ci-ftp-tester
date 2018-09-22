@@ -6,6 +6,8 @@ install:
 before_script:
 - npm run clean
 - npm run build
+script:
+- npm run deploy
 branches:
   only:
   - master

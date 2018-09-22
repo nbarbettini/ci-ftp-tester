@@ -12,6 +12,10 @@ const ignoredRemoteItems = new Set(['.well-known', 'cgi-bin', '.htaccess', 'favi
 
 let itemsToUpload = [];
 
+if (!process.env.FTP_DEPLOY_HOST) throw new Error('FTP_DEPLOY_HOST not set');
+if (!process.env.FTP_DEPLOY_USERNAME) throw new Error('FTP_DEPLOY_USERNAME not set');
+if (!process.env.FTP_DEPLOY_PASSWORD) throw new Error('FTP_DEPLOY_PASSWORD not set');
+
 sftp.connect({
   host: process.env.FTP_DEPLOY_HOST,
   port: '2222',

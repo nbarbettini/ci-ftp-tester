@@ -6,7 +6,6 @@ const fs = require('fs');
 const SftpClient = require('ssh2-sftp-client');
 const sftp = new SftpClient();
 
-const currentDir = process.cwd();
 const remotePathBase = '/home4/nbarbettini/public_html';
 const ignoredRemoteItems = new Set(['.well-known', 'cgi-bin', '.htaccess', 'favicon.ico']);
 
@@ -48,13 +47,14 @@ function scanLocalFiles() {
           return {
             isDirectory: fs.lstatSync(path).isDirectory(),
             localPath: path,
-            remotePath: upath.join(remotePathBase, upath.relative(currentDir + '/public', path))
+            remotePath: upath.join(remotePathBase, upath.relative(process.cwd() + '/public', path))
           }
         });
 
       return items;
     });
 }
+
 
 function cleanRemote() {
   console.log('\nCleaning remote server');
@@ -84,6 +84,7 @@ function cleanRemote() {
     });
 }
 
+
 function createDirectoriesFor(items) {
   console.log('Creating directories');
 
@@ -93,6 +94,7 @@ function createDirectoriesFor(items) {
     sftp.mkdir(dir.remotePath, true)
     .then(() => console.log(`Created directory ${dir.remotePath}`))));
 }
+
 
 function uploadFiles(items) {
   console.log('Uploading files');
